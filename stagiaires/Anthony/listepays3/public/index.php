@@ -4,7 +4,8 @@
 
 //chargement des dépendances 
 
-require_once "../config.php";
+require_once "../config.php";     //Constante de connexion
+require_once "../model/CountriesModel.php";   //Fonctions 
 
 //Tentative de connexion 
 
@@ -23,18 +24,12 @@ catch(Exception $e){
     die("Erreur : ".$e->getMessage());
 }
 
-//Requête sur la DB(model car gestion de données)
+//Requête sur la DB(se trouve dans le dossier model car gestion de données)
 
-$sql = "SELECT * FROM countries";       //requête non-executé
+  $allCountries = getAllCountries($db);
 
-$query = $db->query($sql);              //Exécution de la requête de type SELECT avec query()
-
- $countQuery = $query->rowCount();       //Compte nombre de résultats par ligne
-
- //Le fetchAll crée un tableau indexé qui contient les résultats sous forme de 
-  // tableau associatif(voir ligne près de la connexion)
-//$db->setAttribute(PDO::ATTR_DEFAULT_FETCH_MODE, PDO::FETCH_ASSOC);
- $allCountries = $query->fetchAll();
+ 
+ 
 
  //Récupération du template d'affichage,
  //On utilisera la boucle while avec un fetch directement dans la vue

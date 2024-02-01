@@ -8,9 +8,11 @@
 <body>
     <h1>Liste Pays</h1>
     <h2>Liste de tous les pays du monde</h2>
-    <h3>Nombre de pays : <?=$countQuery?></h3>
+    <h3>Nombre de pays : <?=count($allCountries)?></h3>
     <p><pre><code>Utilisation du foreach pour afficher le tableau des pays  :
-      
+        foreach($allCountries as $countries):
+            echo $countries["nom"];
+        endforeach;
     </code></pre></p>
 
     <?php //var_dump($allCountries)?>
