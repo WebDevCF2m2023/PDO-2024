@@ -2,7 +2,7 @@
 
 // paramètres de connexions
 require_once "../config.php";
-
+require_once "../model/countriesModel.php";
 # Connexion PDO
 try {
     $db = new PDO(
@@ -15,12 +15,7 @@ try {
     die($e->getMessage());
 }
 
-$sql = "SELECT * FROM countries";
-
-$query = $db->query($sql);
-
-$countQuery = $query -> rowCount();
-
-$allCountries = $query->fetchAll();
+$allCountries = getAllCountries($db); 
+$countCountries = getNumberCountries(($db));
 
 include "../view/homepage.view.php";
