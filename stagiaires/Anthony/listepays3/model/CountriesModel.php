@@ -15,3 +15,11 @@ function getNumberCountries(PDO $connect): int
 {
     return 1;
 }
+
+
+//nous affiche les pays par rapport à la page 
+
+function getCountriesByPage(PDO $dbConnect, int $currentPage=1, int $nbByPage=20): array 
+{
+    return[];
+}

@@ -9,3 +9,5 @@ const DB_CHARSET = "utf8mb4";   //charset
 
 // paramètres supplémentaires pour PDO
 const DB_TYPE = "mysql"; // valable pour MySQL et/ou MariaDB
+const MY_PAGINATION_GET = "pg";
+const MY_PAGINATION_BY_PAGE = 50;
