@@ -1,7 +1,7 @@
 <?php
 require_once "../config.php";
 
-
+$nbByPage=20;
 function PaginationModel(string $URL, string $getName, int $nbTotalItem, int $currentPage=1, int $nbByPage=10): string|null {
     $sortie="";
 
