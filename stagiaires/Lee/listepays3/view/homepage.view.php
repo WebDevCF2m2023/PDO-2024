@@ -10,6 +10,12 @@
     <h2>Liste de tous les pays du monde</h2>
     <h3>Nombre de pays : <?=$countCountries?> </h3>
     <?php 
+    if(!empty($_GET['pg']) && ctype_digit($_GET['pg'])){
+        $pageActu =(int)$_GET['pg'];
+    }else{
+        $pageActu = 1;
+    }
+    
         require_once "../model/paginationModel.php";
 
         $i=1;
@@ -21,19 +27,21 @@
     }while($i <= $page);
     echo "</br>";
 
-    $begin =($page-1)*$nbByPage;
+$begin =($pageActu-1)*$nbByPage;
 $end = $begin + $nbByPage;
-$i=0;
+while($begin < $end){
 foreach($allCountries as $pays):
-    do{
         ?>
 
 <p><?=$pays['id']."  ".$pays['nom']?></p> 
 <?php
 $begin++;
-}while($begin < $end && $begin < $nbByPage);
-endforeach;    
+if ($begin == $end){
+    break;
+}
 
+endforeach;    
+}
 $i=1;
 do{
   ?>
