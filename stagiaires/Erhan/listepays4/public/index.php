@@ -1,11 +1,12 @@
 <?php
 /*
-** Contrôleur frontal
+** Contrôleur frontal 
 */
 
 // chargement des dépendances
 require_once "../config.php"; // constantes
-require_once "../model/CountriesModel.php"; // fonctions
+require_once "../model/CountriesModel.php"; // fonctions lées à la table Countries
+require_once "../model/PaginationModel.php";// fonction de pagination
 
 // tentative de connexion
 try{
@@ -22,9 +23,15 @@ try{
     die("Erreur : ".$e->getMessage());
 }
 
-// requête sur la DB (se trouve dans le dossier model car gestion de données)
+// on récupère le nombre total de pays
+$nbPays = getNumberCountries($db);
 
-$allCountries = getAllCountries($db);
+// $pagination = PaginationModel("./",);
+
+
+// requête sur la DB (se trouve dans le dossier model car gestion de données)
+// A remplacer par getCountriesByPage
+$allCountries = getAllCountries($db); // remplacement par getCountriesByPage
 
 
 /* récupération du template d'affichage, 
