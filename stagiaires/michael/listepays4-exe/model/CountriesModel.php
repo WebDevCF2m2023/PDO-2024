@@ -6,6 +6,7 @@ function getAllCountries(PDO $connectDB): array
 {
     $sql = "SELECT * FROM countries"; // requête non exécutée
     $query = $connectDB->query($sql); // exécution de la requête de type SELECT avec query()
+    // convertion des données en un tableau indexé (fetchAll) qui contient chaque ligne de résultat en tableau associatif
     $datas = $query->fetchAll();
     // bonne pratique (autres DB que MySQL ou MariaDB)
     $query->closeCursor();
@@ -13,13 +14,13 @@ function getAllCountries(PDO $connectDB): array
     return $datas;
 }
 
-// nous retourne le nombre de pays
+// nous retourne le nombre de pays avec une requête simple (COUNT)
 function getNumberCountries(PDO $connect): int
 {
     return 1;
 }
 
-// nous affiche les pays par rapport à la page
+// nous affiche les pays par rapport à la page ! lien avec pagination !
 function getCountriesByPage(PDO $dbConnect, 
                             int $currentPage=1, 
                             int $nbByPage=20): array
