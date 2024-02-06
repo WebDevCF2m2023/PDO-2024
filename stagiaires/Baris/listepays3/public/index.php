@@ -4,7 +4,8 @@
 
 //  chargement des dépendances
 // 
-require_once "../config.php";
+require_once "../config.php"; // constantes
+require_once "../model/countriesModel.php"; // fonctions
 
 try { 
      $db = new PDO(MY_DB_TYPE.":host=".MY_DB_HOST.";port=".MY_DB_PORT.";dbname=".MY_DB_NAME.";dbname=".MY_DB_NAME.";charset=".MY_DB_CHARSET, MY_DB_LOGIN, MY_DB_PWD);
@@ -17,6 +18,7 @@ try {
 }
 
 // requête sur la DB (model car gestion de données)
+var_dump(getAllCountries($db));
 
 $sql = "SELECT* FROM countries"; // requête non executée
 $query = $db->query($sql); // execution de la requête de type SELECT avec query()

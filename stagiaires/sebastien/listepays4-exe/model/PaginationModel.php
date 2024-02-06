@@ -17,7 +17,6 @@ function PaginationModel(string $url, // url (pour garder les autres variables g
     // on calcule le nombre de page en divisant le nombre
     // total d'item par le nombre d'item par page
     // le tout arrondit à l'entier supérieur ceil
-    // et retourné en entier avec (int), ceil() retourne un float
     $nbPage = (int) ceil($nbTotalItem/$nbByPage);
 
     // si une seule page, pas de pagination

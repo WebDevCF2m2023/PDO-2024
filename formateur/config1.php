@@ -1,7 +1,7 @@
 <?php
 // paramètres de connexions
 const DB_HOST = "localhost";
-const DB_LOGIN = "root";
+const DB_LOGIN = "root2";
 const DB_PWD = "";
 const DB_NAME = "listepays";
 const DB_PORT = 3307;
