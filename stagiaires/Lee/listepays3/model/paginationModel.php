@@ -14,5 +14,5 @@ function PaginationModel(string $URL, string $getName, int $nbTotalItem, int $cu
 
 $page = PaginationModel("http://pdo-2024/stagiaires/Lee/listepays3/model/paginationModel.php", MY_PAGINATION_GET, 233, 2, MY_PAGINATION_BY_PAGE);
 
-var_dump($page);
+// var_dump($page);
   ?>
