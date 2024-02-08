@@ -35,5 +35,5 @@ function getCountriesByPage(PDO $dbConnect,
     $query = $dbConnect->query($sql);
     //Envoi du tableau de résultat avec fetchAll (tab indexé contenant des assocs)
 
-    return $query->fetchAll();
+    return $query->fetchAll() ;
 }

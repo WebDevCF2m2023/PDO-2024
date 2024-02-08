@@ -1,35 +1,40 @@
 <!DOCTYPE html>
-<html lang="fr">
+<html lang="en">
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Listepays</title>
 </head>
 <body>
-    <h1>Liste Pays</h1>
+    <h1>Listepays</h1>
     <h2>Liste de tous les pays du monde</h2>
-    <h3>Nombre de pays : <?=count($allCountries)?></h3>
-    <p><pre><code>Utilisation du foreach pour afficher le tableau des pays  :
+    <h3>Nombre de pays : <?=$nbPays?> - <a href="./">Accueil</a> </h3>
+    <p><pre><code>Utilisation du foreach pour afficher le tableau des pays :
+        
         foreach($allCountries as $countries):
-            echo $countries["nom"];
+            echo $countries['nom']; 
         endforeach;
     </code></pre></p>
 
     <?php //var_dump($allCountries)?>
 
-
     <h4>Liste des pays</h4>
+    <?php
+    if(isset($pagination)) echo "$pagination<hr>";
+    ?>
     <p>
     <?php
-    // while avec fetch liste chaque élément du PDOStatement avec le fetch 
-    //alternative au fetchAll et foreach
-   foreach($allCountries as $countries):
-        ?>
-<p><?=$countries["nom"]?></p>
-
-        <?php
-        endforeach;
-        ?>
-        </p>
+    $i=($page-1)*MY_PAGINATION_BY_PAGE +1;
+    foreach($countriesByPage as $countries):
+    ?>
+    <p><?=$i." ) ".$countries['nom'] ?></p>
+    <?php
+    $i++;
+    endforeach;
+    ?>
+    </p>
+    <?php
+    if(isset($pagination)) echo "<hr>$pagination";
+    ?>
 </body>
 </html>
