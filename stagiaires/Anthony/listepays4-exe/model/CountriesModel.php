@@ -4,7 +4,7 @@
 // Cette fonction va nous renvoyer un array
 function getAllCountries(PDO $connectDB): array
 {
-    $sql = "SELECT * FROM countries"; // requête non exécutée
+    $sql = "SELECT nom FROM countries"; // requête non exécutée
     $query = $connectDB->query($sql); // exécution de la requête de type SELECT avec query()
     //Conversion des données en un tableau indexé (fetchall) qui contient chaque ligne de résultat en tableau associatif
     $datas = $query->fetchAll();
@@ -17,7 +17,9 @@ function getAllCountries(PDO $connectDB): array
 // nous retourne le nombre de pays avec une requête simple
 function getNumberCountries(PDO $connect): int
 {
-    return 1;
+  $query =  $connect->query("SELECT COUNT('id') AS nb FROM countries");
+  $result = $query->fetch();
+  return $result['nb'];
 }
 
 // nous affiche les pays par rapport à la page, lien avec pagination
@@ -26,5 +28,12 @@ function getCountriesByPage(PDO $dbConnect,
                             int $nbByPage=20): array
 {
     
-    return [];
+    $offset = ($currentPage-1)*$nbByPage;
+    //Création de la requête
+    $sql = "SELECT nom FROM countries LIMIT $offset,$nbByPage";
+    //Execution de la requête
+    $query = $dbConnect->query($sql);
+    //Envoi du tableau de résultat avec fetchAll (tab indexé contenant des assocs)
+
+    return $query->fetchAll();
 }

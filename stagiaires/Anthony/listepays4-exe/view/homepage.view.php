@@ -24,10 +24,12 @@
     ?>
     <p>
     <?php
-    foreach($allCountries as $countries):
+    $i=($page-1)*MY_PAGINATION_BY_PAGE +1;
+    foreach($countriesByPage as $countries):
     ?>
-    <p><?=$countries['nom'] ?></p>
+    <p><?=$i." ) ".$countries['nom'] ?></p>
     <?php
+    $i++;
     endforeach;
     ?>
     </p>
