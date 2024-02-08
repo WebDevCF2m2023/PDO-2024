@@ -23,12 +23,8 @@
         echo "<p>$item[nom]</p>";
       }
 
+      ?>
 
-    foreach ($allCountries as $countries):
-      ?>
-      <p><?=$countries['nom']?></p>
-      <?php
-      endforeach;
-      ?>
+
 </body>
 </html>
