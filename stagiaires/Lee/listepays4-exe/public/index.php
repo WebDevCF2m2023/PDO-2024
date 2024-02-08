@@ -25,7 +25,7 @@ try{
 
 // requête sur la DB (se trouve dans le dossier model car gestion de données)
 
-$allCountries = getAllCountries($db);
+
 $numCountries = getNumberCountries($db);
 
 /* récupération du template d'affichage, 

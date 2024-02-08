@@ -8,7 +8,7 @@
 <body>
     <h1>Listepays</h1>
     <h2>Liste de tous les pays du monde</h2>
-    <h3>Nombre de pays : <?=$numCountries?></h3>
+    <h3>Nombre de pays : <?=$numCountries?> <a href="exemple.php">exemple à mettre en place</a></h3>
     
     <p><pre><code>Utilisation du foreach pour afficher le tableau des pays :
         

@@ -16,30 +16,37 @@ function getAllCountries(PDO $connectDB): array
 // nous retourne le nombre de pays
 function getNumberCountries(PDO $connect): int
 {
-    $sqlCount = "SELECT id FROM countries";
+  /*  $sqlCount = "SELECT id FROM countries";
     $queryID = $connect->query($sqlCount);
     $numCountries =  count($queryID->fetchAll());
     $queryID->closeCursor();
-    return $numCountries;
+    return $numCountries; 
+   */
+
+ // tidier version of above  
+   /* $query = $connect->query("SELECT COUNT('id') AS nb FROM countries");
+    $result = $query->fetch();
+    return $result['nb'];
+    */
+
+// One line version of above
+    return $connect->query("SELECT COUNT('id') AS nb FROM countries")->fetch()['nb'];
     
 }
 
 // nous affiche les pays par rapport à la page
 function getCountriesByPage(PDO $dbConnect, 
                             int $currentPage=1, 
-                            int $nbByPage=20)
-{
-    $sqlList = "SELECT id, nom FROM countries";
-    $showCountries = $dbConnect->query($sqlList);
-    $listCountries = $showCountries->fetchAll();
-    $begin =($currentPage-1)*$nbByPage;
-    $end = $begin + $nbByPage;
-    do{
-        foreach($listCountries as $countries):
-        echo "$countries[nom] <br>";
-    endforeach;
-    $begin++;
-    }while($begin < $end);
-    
+                            int $nbByPage=20): array
+ {         
+    $offset = ($currentPage-1)*$nbByPage;                  
+    $sql = "SELECT nom FROM countries LIMIT $offset, $nbByPage";
+    $query = $dbConnect->query($sql);
+    return $query->fetchAll();
 }
+
+
+
+
+
 
