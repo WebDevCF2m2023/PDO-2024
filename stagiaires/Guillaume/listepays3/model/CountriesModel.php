@@ -5,7 +5,7 @@
 function getAllCountries(PDO $connectDB){
     $sql = "SELECT * FROM countries";
     $query = $connectDB->query($sql);
-    $datas
+    $datas = ;
 }
 
 getAllCountries()
