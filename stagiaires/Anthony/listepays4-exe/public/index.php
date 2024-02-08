@@ -1,12 +1,12 @@
 <?php
 /*
-** Contrôleur frontal
+** Contrôleur frontal 
 */
 
 // chargement des dépendances
 require_once "../config.php"; // constantes
-require_once "../model/CountriesModel.php"; // fonctions lié à la table countries
-require_once "../model/PaginationModel.php"; // fonction de pagination 
+require_once "../model/CountriesModel.php"; // fonctions lées à la table Countries
+require_once "../model/PaginationModel.php";// fonction de pagination
 
 // tentative de connexion
 try{
@@ -17,19 +17,21 @@ try{
     $db->setAttribute(PDO::ATTR_DEFAULT_FETCH_MODE, PDO::FETCH_ASSOC);
 
 // problème lors de la connexion, utilisation de la classe Exception    
-}catch(Exception $e){ 
+}catch(Exception $e){
 
     // arrêt du script et affichage de l'erreur
     die("Erreur : ".$e->getMessage());
 }
-//on récupère le nombre total de pays
-$nbPays =getNumberCountries($db);
 
-$pagination =// PaginationModel("./");
+// on récupère le nombre total de pays
+$nbPays = getNumberCountries($db);
+
+// $pagination = PaginationModel("./",);
+
 
 // requête sur la DB (se trouve dans le dossier model car gestion de données)
-//a remplacer par getcountriesbypage
-$allCountries = getCountriesByPage($db);   //remplacement par getcountriesbypage
+// A remplacer par getCountriesByPage
+$allCountries = getAllCountries($db); // remplacement par getCountriesByPage
 
 
 /* récupération du template d'affichage, 

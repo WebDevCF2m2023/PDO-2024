@@ -20,7 +20,7 @@
 
     <h4>Liste des pays</h4>
     <?php
-    if(isset($pagination)) echo "$pagination <hr>";
+    if(isset($pagination)) echo "$pagination<hr>";
     ?>
     <p>
     <?php
@@ -31,5 +31,8 @@
     endforeach;
     ?>
     </p>
+    <?php
+    if(isset($pagination)) echo "<hr>$pagination";
+    ?>
 </body>
 </html>
