@@ -6,6 +6,7 @@
 // chargement des dépendances
 require_once "../config.php"; // constantes
 require_once "../model/CountriesModel.php"; // fonctions
+require_once "../model/PaginationModel.php";
 
 // tentative de connexion
 try{
@@ -24,12 +25,25 @@ try{
 
 // requête sur la DB (se trouve dans le dossier model car gestion de données)
 
-$allCountries = getAllCountries($db);
+//$allCountries = getAllCountries($db);
+
+$nbPays = getNumberCountries($db);
 
 
 /* récupération du template d'affichage, 
 on utilisera la boucle while avec un fetch directement
 dans la vue */
+
+
+if(isset($_GET[MY_PAGINATION_GET]) && ctype_digit($_GET[MY_PAGINATION_GET])){
+    $page = (int) $_GET[MY_PAGINATION_GET];
+}else{
+    $page = 1;
+}
+
+$pagination = PaginationModel("./",MY_PAGINATION_GET,$nbPays,$page,MY_PAGINATION_BY_PAGE);
+
+$countriesByPage = getCountriesByPage($db,$page,MY_PAGINATION_BY_PAGE);
 
 include "../view/homepage.view.php";
 
