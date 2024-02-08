@@ -1,11 +1,12 @@
 <?php
 /*
-** Contrôleur frontal
+** Contrôleur frontal 
 */
 
 // chargement des dépendances
 require_once "../config.php"; // constantes
-require_once "../model/CountriesModel.php"; // fonctions
+require_once "../model/CountriesModel.php"; // fonctions lées à la table Countries
+require_once "../model/PaginationModel.php";// fonction de pagination
 
 // tentative de connexion
 try{
@@ -22,16 +23,35 @@ try{
     die("Erreur : ".$e->getMessage());
 }
 
+/* on récupère le nombre total de pays 
+pour la pagination et pour le getCountriesByPage */
+$nbPays = getNumberCountries($db);
+
+/* si il existe une variable $_GET nommée comme MY_PAGINATION_GET et qu'elle
+est un string contenant que les symboles numériques 0123456789 [0-9]* 
+*/
+if(isset($_GET[MY_PAGINATION_GET]) && ctype_digit($_GET[MY_PAGINATION_GET])){
+    $page = (int) $_GET[MY_PAGINATION_GET];
+}else{
+    $page = 1;
+}
+
+
+$pagination = PaginationModel("./",MY_PAGINATION_GET,$nbPays,$page,MY_PAGINATION_BY_PAGE);
+
+
 // requête sur la DB (se trouve dans le dossier model car gestion de données)
+// A remplacer par getCountriesByPage
+//$allCountries = getAllCountries($db); // remplacement par getCountriesByPage
 
-$allCountries = getAllCountries($db);
-
+$countriesByPage = getCountriesByPage($db,$page,MY_PAGINATION_BY_PAGE);
 
 /* récupération du template d'affichage, 
 on utilisera la boucle while avec un fetch directement
 dans la vue */
 
-include "../view/homepage.view.php";
+include "../view/homepage.exemple.view.php";
+
 
 // déconnexion (bonne pratique)
-$db=null;
+$db=null; 
