@@ -16,6 +16,8 @@
         endforeach;
     </code></pre></p>
 
+    <?php //var_dump($allCountries)?>
+
     <h4>Liste des pays</h4>
     <?php
     if(isset($pagination)) echo "$pagination<hr>";
