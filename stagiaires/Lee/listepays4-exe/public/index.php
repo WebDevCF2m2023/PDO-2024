@@ -9,6 +9,10 @@ require_once "../model/CountriesModel.php"; // fonctions
 require_once "../model/PaginationModel.php";
 
 // tentative de connexion
+
+// requête sur la DB (se trouve dans le dossier model car gestion de données)
+
+
 try{
     // création d'une instance de PDO 
     $db = new PDO(MY_DB_TYPE.":host=".MY_DB_HOST.";port=".MY_DB_PORT.";dbname=". MY_DB_NAME.";charset=".MY_DB_CHARSET, MY_DB_LOGIN, MY_DB_PWD);
@@ -22,17 +26,18 @@ try{
     // arrêt du script et affichage de l'erreur
     die("Erreur : ".$e->getMessage());
 }
-
-// requête sur la DB (se trouve dans le dossier model car gestion de données)
-
-
 $numCountries = getNumberCountries($db);
+
+$viewPage = PaginationModel("index.php", MY_PAGINATION_GET, $numCountries , $page, MY_PAGINATION_BY_PAGE);
+
+
+
 
 /* récupération du template d'affichage, 
 on utilisera la boucle while avec un fetch directement
 dans la vue */
-
 include "../view/homepage.view.php";
+$countriesByPage = getCountriesByPage($db, $page,MY_PAGINATION_BY_PAGE);
 
 // déconnexion (bonne pratique)
 $db=null;
