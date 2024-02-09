@@ -37,7 +37,6 @@ $viewPage = PaginationModel("index.php", MY_PAGINATION_GET, $numCountries , $pag
 on utilisera la boucle while avec un fetch directement
 dans la vue */
 include "../view/homepage.view.php";
-$countriesByPage = getCountriesByPage($db, $page,MY_PAGINATION_BY_PAGE);
 
 // déconnexion (bonne pratique)
 $db=null;
