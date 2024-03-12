@@ -39,8 +39,8 @@ require_once "PDOConnect.php";
     //On prépare la requete
     $query = $PDOConnect->prepare($sql);
 
-    $query->bindValue("monid", $num1);
-    $query->bindValue("mon2id", $num2);
+    $query->bindValue("monid", $num1, PDO::PARAM_INT);
+    $query->bindValue("mon2id", $num2, PDO::PARAM_INT);
 
     //On utilise le try catch sur l'execute
 
