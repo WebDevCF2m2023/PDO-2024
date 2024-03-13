@@ -10,17 +10,14 @@ try {
         MY_DB_LOGIN,
         MY_DB_PWD
     );
-        $db->setAttribute(PDO::ATTR_DEFAULT_FETCH_MODE, PDO::FETCH_ASSOC);   // default method for FETCH
+
 }catch(Exception $e){
     die($e->getMessage());
 }
 
 $sql = "SELECT * FROM countries";
-
 $query = $db->query($sql);
-
 $countQuery = $query -> rowCount();
-
-$allCountries = $query->fetchAll();
-
+$sql2 = "SELECT * FROM countries WHERE nom = 'Irlande' OR nom = 'Belgique' OR nom = 'Turquie'";
+$query2 = $db->query($sql2);
 include "../view/homepage.view.php";

@@ -10,12 +10,11 @@
     <h2>Liste de tous les pays du monde</h2>
     <h3>Nombre de pays : <?=$countQuery?></h3>
     <?php 
-    foreach($allCountries as $pays):       
-    ?>
-    <p><?=$pays['id'].': '.$pays['nom']?></p>
-    <?php
-    endforeach;
+    while($item = $query->fetch(PDO::FETCH_ASSOC)){
+        echo "<p>$item[id] : $item[nom]</p>";
+    }
     ?>
 
+    <?php var_dump(($query))?>
 </body>
 </html>
