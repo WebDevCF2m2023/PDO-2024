@@ -34,7 +34,7 @@ require_once "PDOConnect.php";
     $recup = $PDOConnect->query("SELECT * FROM countries WHERE id BETWEEN $num1 AND $num2");
 
 
-    //Requete avec entrée utilisateur 
+    //Requete avec entrée utilisateur  avec marqueur nommé 
     $sql = "SELECT * FROM countries WHERE id BETWEEN :monid AND :mon2id";
     //On prépare la requete
     $query = $PDOConnect->prepare($sql);
