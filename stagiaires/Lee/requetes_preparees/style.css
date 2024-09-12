@@ -1,0 +1,35 @@
+body {
+background: linear-gradient(180deg, hsla(208, 33%, 21%, 1) 0%, hsla(211, 36%, 46%, 1) 100%); 
+color: hsla(180, 36%, 46%, 1);
+height: 150vh;
+}
+li {
+    display: inline;
+    padding: 1em;
+}
+
+a {
+    color: hsla(180, 36%, 46%, 1);
+    
+}
+
+form {
+    margin-left: 5vw;
+}
+
+table {
+    margin-top: 1vh;
+    margin-left: 12vw;
+}
+
+
+th, td {
+    border: 1px solid black;
+    border-color:hsla(180, 36%, 46%, 1);;
+    text-align: center;
+}
+
+input, button {
+    background-color:  hsla(180, 13%, 76%, 1);
+}
+
